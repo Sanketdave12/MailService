@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block noauth %}
+<div class="container">
+    <div class="jumbotron">
+            <h1>Welcome to the DevMail Services.</h1>
+            <a href="{% url 'account:sign' %}" class='btn btn-primary'>Sign Up</a>
+            <a href="{% url 'account:log' %}" class='btn btn-primary'>Log In</a>
+    </div>
+</div>
+{% endblock noauth %}
