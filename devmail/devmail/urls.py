@@ -22,6 +22,7 @@ urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('mail_data/', UserList.as_view(), name ='mail_data'),
     path('account/', include('account.urls'), name='account'),
+    path('mails/',include('mails.urls'), name='mails'),
     #path('test/',views.Test.as_view(), name='test'),
     path('admin/', admin.site.urls),
 ]

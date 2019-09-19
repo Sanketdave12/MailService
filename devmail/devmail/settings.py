@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
+    'mails',
     'bootstrap3',
 ]
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'devmail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,os.path.join(BASE_DIR, 'account/templates')],
+        'DIRS': [TEMPLATE_DIR,os.path.join(BASE_DIR, 'account/templates'), os.path.join(BASE_DIR, 'mails/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
