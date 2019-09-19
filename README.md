@@ -1,2 +1,2 @@
 # MailService
- MailService using Django
+ MailService using Django.
