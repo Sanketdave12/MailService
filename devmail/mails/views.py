@@ -15,17 +15,19 @@ User = get_user_model()
 
 class MailList(generic.ListView):
     model = models.Mails
-    object_name = 'mail_list'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     # context['now'] = timezone.now()
-    #     return context
+    def get_query(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user__username__iexact=self.kwargs.get('sender'))
 
 class MailDetail(generic.DetailView):
     model = models.Mails
     # select_related = ('user', 'group')
 
     def get_query(self):
-        queryset = super().get_queryset()
-        return queryset.filter(user__username__iexact=self.kwargs.get('sender'), pk=self.kwargs.get('pk'))
+        try:
+            self.account_user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
+        except User.DoesNotExist:
+             raise Http404
+        else:
+            return self.post_user.posts.all()

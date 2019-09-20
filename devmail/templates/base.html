@@ -60,7 +60,8 @@
           </div>
         </nav>
         {% block auth %}{% endblock auth %}
+        {% else %}
+        {% block noauth %}{% endblock noauth %}
         {% endif %}
-      {% block noauth %}{% endblock noauth %}
     </body>
 </html>
