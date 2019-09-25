@@ -7,9 +7,7 @@
     <body>
         <div class="col-md-8">
             {% for mail in object_list %}
-                <a href="{% url 'mails:single' sender=mail.sender pk=mail.pk %} ">{{ mail.subject }}</a>
-                <h1>{{ mail.sender }}{{ mail.pk }}</h1>
-                <h2>{{ user.username }}</h2>
+                <a href="{% url 'mails:single' sender=mail.sender pk=mail.pk %} ">{{ mail.subject }}</a><br>
             {% endfor %}
         </div>
     </body>

@@ -13,21 +13,27 @@ from django.contrib import messages
 
 User = get_user_model()
 
-class MailList(generic.ListView):
+class MailSentList(generic.ListView):
     model = models.Mails
+    template_name = 'mails/mails_sent_list.html'
 
-    def get_query(self):
+    def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(user__username__iexact=self.kwargs.get('sender'))
+        return queryset.filter(sender__username__iexact=self.kwargs.get('sender'))
+
+class MailReceiveList(generic.ListView):
+    model = models.Mails
+    template_name = 'mails/mails_receive_list.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(receiver__username__iexact=self.request.user.username)
+
 
 class MailDetail(generic.DetailView):
     model = models.Mails
     # select_related = ('user', 'group')
 
-    def get_query(self):
-        try:
-            self.account_user = User.objects.prefetch_related('posts').get(username__iexact=self.kwargs.get('username'))
-        except User.DoesNotExist:
-             raise Http404
-        else:
-            return self.post_user.posts.all()
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(sender__username__iexact=self.kwargs.get('sender'), pk=self.kwargs.get('pk'))

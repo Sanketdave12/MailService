@@ -4,7 +4,9 @@ from django.contrib.auth import get_user_model
 from . import forms
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 # Create your views here.
+from mails import views
 
 User = get_user_model()
 
@@ -21,4 +23,7 @@ class CreateUser(CreateView):
     template_name = 'account/signup.html'
 
 class LogInUser(CreateView):
-    pass
+    success_url = reverse_lazy('account:log')
+
+def get_login_redirect(request):
+    return views.MailReceiveList.as_view()(request)

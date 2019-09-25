@@ -57,7 +57,11 @@ ROOT_URLCONF = 'devmail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,os.path.join(BASE_DIR, 'account/templates'), os.path.join(BASE_DIR, 'mails/templates')],
+        'DIRS': [
+            TEMPLATE_DIR,
+            os.path.join(BASE_DIR, 'account/templates'),
+            os.path.join(BASE_DIR, 'mails/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -122,5 +126,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'mail_data'
 LOGOUT_REDIRECT_URL = 'index'

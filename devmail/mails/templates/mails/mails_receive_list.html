@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block auth %}
-<a href="{% url 'mails:all' sender=user.username %}">Go</a>
 
         <div class="row">
             <div class="col-md-4">
@@ -16,7 +15,7 @@
         </div>
         <div class="col-md-8">
             {% for mail in object_list %}
-                <a href="#">{{ mail.subject }}</a>
+                <a href="{% url 'mails:single' sender=mail.sender pk=mail.pk  %}">{{ mail.subject }}</a>
             {% endfor %}
         </div>
 {% endblock auth %}

@@ -8,4 +8,5 @@ urlpatterns = [
     path('signup/', views.CreateUser.as_view(), name='sign'),
     path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='log'),
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
+    path('get_login/',views.get_login_redirect,name='get_login'),
 ]

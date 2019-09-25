@@ -11,6 +11,7 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             <input type="submit" name="" value="Log In" class='btn btn-primary'>
+            <input type="hidden" name="next" value="{% url 'mails:receive' %}" />
         </form>
     </div>
 </div>
