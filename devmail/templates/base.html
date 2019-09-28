@@ -27,7 +27,7 @@
 
         {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="{% url 'mails:sent' sender='Dev' %}">DevMail</a>
+          <a class="navbar-brand" href="{% url 'mails:receive' %}">DevMail</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -35,8 +35,8 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto navbar-right">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
+                <a class="nav-link dropdown-toggle" href="{% url 'mails:compose' %}" id="navbarDropdown" role="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Compose
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Action</a>

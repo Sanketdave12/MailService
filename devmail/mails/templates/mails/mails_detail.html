@@ -10,5 +10,6 @@
         <p>Sent on : {{ object.sent_at }}</p>
         <p>Subject : {{ object.subject }}</p>
         <p>Message : {{ object.message }}</p>
+        <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
     </body>
 </html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block auth %}
+<div class="jumbotron">
+    <form action="{% url 'mails:compose' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" name="" value="Send">
+    </form>
+</div>
+{% endblock auth %}

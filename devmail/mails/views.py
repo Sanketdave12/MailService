@@ -37,3 +37,14 @@ class MailDetail(generic.DetailView):
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(sender__username__iexact=self.kwargs.get('sender'), pk=self.kwargs.get('pk'))
+
+class Compose(generic.CreateView):
+    fields = ('receiver', 'subject', 'message')
+    model = models.Mails
+    template_name = 'mails/compose.html'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.sender = self.request.user
+        self.object.save()
+        return super().form_valid(form)
