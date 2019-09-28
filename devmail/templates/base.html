@@ -3,29 +3,30 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Mail Services</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <style media="screen">
-            #logout{
-                padding-left: 10px;
+            .right-button{
+                margin-left: 10px;
             }
-            #search{
-                padding-left: 150px;
+            li {
+                margin-top: 2px;
+                margin-bottom: 2px;
             }
-            #sent{
-              padding-left: 300px;
-            }
-            .far{
-                padding-left: 25px;
-                padding-top: 5px;
+            .navbar-center{
+                margin: auto;
             }
         </style>
     </head>
     <body>
 
         {% if user.is_authenticated %}
+        <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="{% url 'mails:receive' %}">DevMail</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,38 +34,37 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto navbar-right">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'mails:compose' %}" id="navbarDropdown" role="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="{% url 'mails:compose' %}" class="btn btn-primary">
                   Compose
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
               </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-center">
               <li id='search'>
                   <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" size="50">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
               </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
               <li id='sent'>
-                <a href="{% url 'mails:sent' sender=user.username %}">Sent Mails</a>
+                <a href="{% url 'mails:sent' sender=user.username %}" class="btn btn-primary right-button">Sent Mails</a>
               </li>
               <li id='logout'>
-                  <a href="{% url 'account:logout' %}" class='btn btn-primary'>Logout</a>
+                  <a href="{% url 'account:logout' %}" class='btn btn-primary right-button'>Logout</a>
               </li>
               <li>
                   <a href="#">
-                      <span class='far fa-user' style='font-size:24px'></span>
+                      <span class='far fa-user right-button' style='font-size:28px; margin-top:4px;'></span>
                   </a>
               </li>
-            </ul>
+        </ul>
           </div>
         </nav>
+        </div>
         {% block auth %}{% endblock auth %}
         {% else %}
         {% block noauth %}{% endblock noauth %}

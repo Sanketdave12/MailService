@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Detail</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block auth %}
+<div class="container">
+    <div class="jumbotron">
         <p>Sender : {{ object.sender }}</p>
         <p>Receiver : {{ object.receiver }}</p>
         <p>Sent on : {{ object.sent_at }}</p>
         <p>Subject : {{ object.subject }}</p>
         <p>Message : {{ object.message }}</p>
         <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock auth %}

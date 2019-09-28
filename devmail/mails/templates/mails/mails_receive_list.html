@@ -2,6 +2,8 @@
 
 {% block auth %}
 
+    <div class="container">
+
         <div class="row">
             <div class="col-md-4">
                 <a href="#">Primary</a>
@@ -13,9 +15,14 @@
                 <a href="#">Promotions</a>
             </div>
         </div>
-        <div class="col-md-8">
+
+
+    </div>
+        <div class="container jumbotron">
+            <ul class="list-group">
             {% for mail in object_list %}
-                <a href="{% url 'mails:single' sender=mail.sender pk=mail.pk  %}">{{ mail.subject }}</a>
+                <li class="list-group-item"><a href="{% url 'mails:single' sender=mail.sender pk=mail.pk  %}">{{ mail.subject }}</a></li>
             {% endfor %}
+            </ul>
         </div>
 {% endblock auth %}

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>List</title>
-    </head>
-    <body>
-        <div class="col-md-8">
-            {% for mail in object_list %}
-                <a href="{% url 'mails:single' sender=mail.sender pk=mail.pk %} ">{{ mail.subject }}</a><br>
-            {% endfor %}
-        </div>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block auth %}
+<div class="container jumbotron">
+  <ul class="list-group">
+    {% for mail in object_list %}
+        <li class="list-group-item"><a href="{% url 'mails:single' sender=mail.sender pk=mail.pk %} ">{{ mail.subject }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock auth %}
