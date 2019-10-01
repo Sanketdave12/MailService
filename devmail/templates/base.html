@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load bootstrap3 %}
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -43,9 +44,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-center">
               <li id='search'>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" size="50">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <form class="form-inline my-2 my-lg-0" action="{% url 'mails:search' subject='h' %}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" size="50">
+                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
                   </form>
               </li>
           </ul>
@@ -57,7 +58,7 @@
                   <a href="{% url 'account:logout' %}" class='btn btn-primary right-button'>Logout</a>
               </li>
               <li>
-                  <a href="#">
+                  <a href="{% url 'account:user_detail' user=user.username pk=1 %}">
                       <span class='far fa-user right-button' style='font-size:28px; margin-top:4px;'></span>
                   </a>
               </li>

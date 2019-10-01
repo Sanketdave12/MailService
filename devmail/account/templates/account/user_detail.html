@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block auth %}
+<div class="container">
+    <div class="jumbotron">
+        {% for object in object_list %}
+            <p>Username : {{ object.username }}</p>
+            <p>First Name : {{ object.first_name }}</p>
+            <p>Last Name : {{ object.last_name }}</p>
+            <p>Email : {{ object.email }}</p>
+        {% endfor %}
+        <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
+    </div>
+</div>
+{% endblock auth %}

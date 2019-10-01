@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block auth %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#">Primary</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#">Social</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#">Promotions</a>
+            </div>
+        </div>
+
+
+    </div>
+        <div class="container jumbotron">
+            {% if object_list.count == 0 %}
+                <h1>No records Found!!!</h1>
+                <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
+            {% else %}
+            <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
+            <ul class="list-group">
+            {% for mail in object_list %}
+                <li class="list-group-item"><a href="{% url 'mails:single' sender=mail.sender pk=mail.pk  %}">{{ mail.subject }}</a></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+{% endblock auth %}
