@@ -9,7 +9,7 @@ from . import models
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .import forms
+from django import forms
 
 # Create your views here.
 
@@ -45,6 +45,8 @@ class Compose(generic.CreateView):
     fields = ('receiver', 'subject', 'message')
     model = models.Mails
     template_name = 'mails/compose.html'
+    # widgets = {'receiver': forms.TextInput}
+
 
     def form_valid(self, form):
         self.object = form.save(commit=False)

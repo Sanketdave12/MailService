@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 import misaka
 # from groups.models import Group
-
+from django import forms
 # Create your models here.
 User = get_user_model()
 

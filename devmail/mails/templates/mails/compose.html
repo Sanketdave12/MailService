@@ -6,7 +6,7 @@
     <form action="{% url 'mails:compose' %}" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" name="" value="Send">
+        <input type="submit" name="" value="Send" class="btn btn-primary">
     </form>
 </div>
 {% endblock auth %}
