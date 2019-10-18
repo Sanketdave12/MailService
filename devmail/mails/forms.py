@@ -1,9 +1,22 @@
 from django import forms
+from . import models
+from searchableselect.widgets import SearchableSelect
+from account.models import User
 
-class SearchForm(forms.Form):
+class ComposeForm(forms.ModelForm):
 
-    subject = forms.CharField(max_length=150)
-
-    def clean(self):
-        all_clean_data = super().clean()
-        subject = all_clean_data['subject']
+    class Meta:
+        fields = ('receiver', 'subject', 'message')
+        model = models.Mails
+        labels = {
+            'receiver' : 'To',
+        }
+        widgets = {
+            'receiver': forms.Select(attrs={
+                'class' : 'selectpicker',
+                'data-live-search' : 'true',
+                'data-size' : '5',
+                'required' : 'required'
+            }),
+            'subject': forms.TextInput(),
+        }

@@ -25,4 +25,6 @@ urlpatterns = [
     path('mails/',include('mails.urls'), name='mails'),
     #path('test/',views.Test.as_view(), name='test'),
     path('admin/', admin.site.urls),
+    path('searchableselect/', include('searchableselect.urls')),
+    path(r'^select2/', include('django_select2.urls')),
 ]

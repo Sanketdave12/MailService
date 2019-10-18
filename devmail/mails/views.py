@@ -9,7 +9,7 @@ from . import models
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django import forms
+from . import forms
 
 # Create your views here.
 
@@ -42,7 +42,7 @@ class MailDetail(generic.DetailView):
         return queryset.filter(sender__username__iexact=self.kwargs.get('sender'), pk=self.kwargs.get('pk'))
 
 class Compose(generic.CreateView):
-    fields = ('receiver', 'subject', 'message')
+    form_class = forms.ComposeForm
     model = models.Mails
     template_name = 'mails/compose.html'
     # widgets = {'receiver': forms.TextInput}
