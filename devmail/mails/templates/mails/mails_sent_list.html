@@ -2,11 +2,12 @@
 
 {% block auth %}
 <div class="container jumbotron">
-  <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
   <ul class="list-group">
     {% for mail in object_list %}
         <li class="list-group-item"><a href="{% url 'mails:single' sender=mail.sender pk=mail.pk %} ">{{ mail.subject }}</a></li>
     {% endfor %}
   </ul>
+  <p></p>
+  <a href="{% url 'mails:receive' %}" class="btn btn-primary">Home</a>
 </div>
 {% endblock auth %}
